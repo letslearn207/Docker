@@ -1,0 +1,38 @@
+📘 Situation
+
+You are the on-call DevOps engineer responsible for maintaining a production environment.
+
+At 02:00 AM, an alert is triggered indicating that the production API service is unreachable.
+
+You immediately connect to Server 3 to investigate the issue. Initial checks suggest that the application might not be running inside its Docker container.
+
+🧩 Your Responsibilities
+
+Based on the operational guidelines, you must:
+
+🔍 1. Investigation
+Verify whether the application container is currently running.
+Identify any container that has stopped unexpectedly.
+Examine the logs of the failed container to determine the root cause.
+(Hint: Look for memory-related termination messages such as OOM-related errors.)
+🛠️ 2. Service Restoration
+Start a new container instance to restore the application.
+Ensure that the container is launched using the exact production configuration:
+Parameter	Value
+Container Name	api-container
+Image	myapp:v2.1.3
+Restart Policy	unless-stopped
+Port Mapping	8080:8080
+Mode	Detached
+📍 Working Directory
+/home/user
+✅ Expected Result
+A new container named api-container is successfully running.
+The application is accessible via port 8080.
+The root cause of the failure is identified from logs.
+
+###############################################
+
+Solution:  https://docs.google.com/document/d/1N5EPR4qRVAiH4IbJo25L9mUxfO069gTF/edit?usp=sharing&ouid=103157204066713600014&rtpof=true&sd=true
+
+################################################
