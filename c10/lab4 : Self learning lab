@@ -1,0 +1,31 @@
+The Manual Rollout
+Scenario
+You are managing a production server running a critical application (v2.1.3). A severe bug has been reported, and the development team has pushed a patch image: myapp:v2.1.4.
+
+Because this environment relies on manual Docker containers instead of an orchestrator, you cannot perform a "Rolling Update." You must perform a manual replacement of the container. This scenario demonstrates the high-stress environment of manual operations where service downtime is inevitable during updates.
+
+Task
+Working directory: /home/user
+
+1. Verification:
+
+Check the currently running container named api-container. Confirm it is running the old image (v2.1.3).
+2. The Manual Update:
+
+Stop the running container to release the port.
+Remove the stopped container to free up the name api-container.
+Start a new container using the same name (api-container) but with the new image (myapp:v2.1.4).
+You MUST manually ensure the new container matches the exact production configuration:
+Port Mapping: Host 8080 to Container 8080
+Restart Policy: unless-stopped
+Mode: Detached (-d)
+Expected Outcome
+The container api-container is active and running image myapp:v2.1.4.
+Learning Note: Notice that between the "Stop" and "Start" commands, your application was completely offline. This "downtime gap" is a major risk in manual operations that Orchestration solves.
+#########################################
+
+############## ANSWER #####################
+
+###########################################
+
+Solution document: https://docs.google.com/document/d/1neXtkQyFbpsT3QSYAZ01syDY-X7gTM0r/edit?usp=sharing&ouid=103157204066713600014&rtpof=true&sd=true
