@@ -1,0 +1,42 @@
+1)Install:
+https://drive.google.com/file/d/1vu89VozabuvKNrsXVkjky1rJntNNVXwE/view?usp=sharing
+
+2) Create service:
+https://drive.google.com/file/d/1lODRtlNN6ldqgDKVTuf2RkJ7SGmiHeUF/view?usp=sharing
+
+3) 
+#overlay network
+
+docker network create -d overlay my-overlay-net
+docker network ls
+
+docker service create \
+  --name backend \
+  --network my-overlay-net \
+  --replicas 2 \
+  alpine \
+  sleep 10000
+
+Check:
+docker service ps backend
+
+#Deploy frontend
+
+docker service create \
+  --name frontend \
+  --network my-overlay-net \
+  --replicas 2 \
+  -p 8080:80 \
+  nginx
+
+The app is exposed on: http://<ANY-NODE-IP>:8080
+
+
+#verify overlay connection:
+docker ps
+docker exec -it <container-id> sh
+ping frontend
+
+#Inspect network : docker network inspect my-overlay-net
+
+
