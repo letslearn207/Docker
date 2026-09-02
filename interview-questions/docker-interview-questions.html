@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker Interview Questions (1&ndash;3 Yrs DevOps) &mdash; 100 Questions</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card-bg: #ffffff;
+    --border: #e3e6ea;
+    --text-primary: #1a1d23;
+    --text-secondary: #5b6270;
+    --accent: #2563eb;
+    --accent-light: #eaf1ff;
+    --accent-soft: #dbeafe;
+    --tag-bg: #f1f5f9;
+    --shadow: 0 1px 2px rgba(16,24,40,0.04), 0 1px 3px rgba(16,24,40,0.06);
+    --shadow-hover: 0 4px 10px rgba(16,24,40,0.08);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  header.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+    color: #fff;
+    padding: 56px 24px 64px;
+    text-align: center;
+  }
+
+  header.hero h1 {
+    margin: 0 0 12px;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  header.hero p {
+    margin: 0 auto;
+    max-width: 720px;
+    color: #cbd5e1;
+    font-size: 15px;
+  }
+
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+
+  .hero-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #e2e8f0;
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin: -34px auto 60px;
+    padding: 0 20px;
+  }
+
+  nav.toc {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 20px 22px;
+    margin-bottom: 36px;
+  }
+
+  nav.toc h3 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+  }
+
+  .toc-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 10px;
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14.5px;
+    transition: background 0.15s ease;
+  }
+
+  .toc-link:hover { background: var(--accent-light); }
+
+  .toc-count {
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    font-size: 12px;
+    padding: 2px 9px;
+    border-radius: 999px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 44px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-soft);
+    color: #0f172a;
+  }
+
+  .q-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .q-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  .q-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
+  }
+
+  .q-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .q-num {
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    background: var(--accent);
+    padding: 2px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  .q-tag {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    background: var(--tag-bg);
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .q-text {
+    margin: 0;
+    font-size: 15.5px;
+    color: var(--text-primary);
+    line-height: 1.55;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+    padding: 30px 20px 50px;
+  }
+
+  @media (min-width: 720px) {
+    .q-grid { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    header.hero { background: #1e3a8a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .q-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Docker Interview Questions</h1>
+  <p>A curated set of 100 Docker &amp; Dockerfile interview questions for DevOps candidates with 1&ndash;3 years of experience &mdash; covering fundamentals, Dockerfile authoring, images, networking, volumes, Compose, and security.</p>
+  <div class="hero-badges">
+    <span class="hero-badge">100 Questions</span>
+    <span class="hero-badge">1&ndash;3 Yrs DevOps</span>
+    <span class="hero-badge">Dockerfile Focus</span>
+    <span class="hero-badge">Light Theme</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc">
+    <h3>Jump to Section</h3>
+    <a href="#sec-docker-fundamentals-and-core-concepts" class="toc-link">Docker Fundamentals &amp; Core Concepts <span class="toc-count">20</span></a>
+<a href="#sec-dockerfile-deep-dive" class="toc-link">Dockerfile Deep Dive <span class="toc-count">25</span></a>
+<a href="#sec-images-and-layers" class="toc-link">Images &amp; Layers <span class="toc-count">10</span></a>
+<a href="#sec-containers-and-runtime" class="toc-link">Containers &amp; Runtime <span class="toc-count">10</span></a>
+<a href="#sec-docker-networking" class="toc-link">Docker Networking <span class="toc-count">10</span></a>
+<a href="#sec-volumes-storage-and-persistence" class="toc-link">Volumes, Storage &amp; Persistence <span class="toc-count">10</span></a>
+<a href="#sec-docker-compose" class="toc-link">Docker Compose <span class="toc-count">10</span></a>
+<a href="#sec-security-optimization-and-real-world-scenarios" class="toc-link">Security, Optimization &amp; Real-World Scenarios <span class="toc-count">5</span></a>
+  </nav>
+
+  <h2 id="sec-docker-fundamentals-and-core-concepts" class="section-title">Docker Fundamentals &amp; Core Concepts</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q1</span>
+            <span class="q-tag">Asked at Amazon &middot; 2023</span>
+          </div>
+          <p class="q-text">What is Docker and how is it different from a traditional virtual machine?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q2</span>
+            <span class="q-tag">Asked at Microsoft &middot; 2023</span>
+          </div>
+          <p class="q-text">Explain the Docker architecture — what are the roles of the Docker client, Docker daemon, and Docker registry?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q3</span>
+            <span class="q-tag">Asked at Google &middot; 2023</span>
+          </div>
+          <p class="q-text">What is the difference between an image and a container?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q4</span>
+            <span class="q-tag">Asked at Accenture &middot; 2024</span>
+          </div>
+          <p class="q-text">What is a Docker registry? How is Docker Hub different from a private registry like ECR or Nexus?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q5</span>
+            <span class="q-tag">Asked at TCS &middot; 2024</span>
+          </div>
+          <p class="q-text">Explain the layered filesystem used by Docker images. Why does layering matter for performance?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q6</span>
+            <span class="q-tag">Asked at Infosys &middot; 2024</span>
+          </div>
+          <p class="q-text">What is the difference between `docker run` and `docker start`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q7</span>
+            <span class="q-tag">Asked at Wipro &middot; 2025</span>
+          </div>
+          <p class="q-text">What happens internally when you run `docker run nginx`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q8</span>
+            <span class="q-tag">Asked at Cognizant &middot; 2025</span>
+          </div>
+          <p class="q-text">How does Docker achieve process isolation on a Linux host? What role do namespaces and cgroups play?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q9</span>
+            <span class="q-tag">Asked at Deloitte &middot; 2025</span>
+          </div>
+          <p class="q-text">What is the union file system (OverlayFS) and why does Docker use it?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q10</span>
+            <span class="q-tag">Asked at JPMorgan Chase &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the difference between `CMD` and `ENTRYPOINT`, and when would you use both together?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q11</span>
+            <span class="q-tag">Asked at Walmart Labs &middot; 2026</span>
+          </div>
+          <p class="q-text">What is a base image, and how do you choose the right one for a production service?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q12</span>
+            <span class="q-tag">Asked at Flipkart &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the difference between `docker stop` and `docker kill`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q13</span>
+            <span class="q-tag">Asked at Paytm &middot; 2023</span>
+          </div>
+          <p class="q-text">How do you check resource usage (CPU, memory) of a running container?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q14</span>
+            <span class="q-tag">Asked at Swiggy &middot; 2023</span>
+          </div>
+          <p class="q-text">What is the default network driver in Docker, and what other network drivers exist?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q15</span>
+            <span class="q-tag">Asked at Zomato &middot; 2023</span>
+          </div>
+          <p class="q-text">What is the difference between `COPY` and `ADD` in a Dockerfile?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q16</span>
+            <span class="q-tag">Asked at HCLTech &middot; 2024</span>
+          </div>
+          <p class="q-text">How would you remove all stopped containers and dangling images in one go?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q17</span>
+            <span class="q-tag">Asked at Capgemini &middot; 2024</span>
+          </div>
+          <p class="q-text">What is the difference between an anonymous volume and a named volume?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q18</span>
+            <span class="q-tag">Asked at IBM &middot; 2024</span>
+          </div>
+          <p class="q-text">How do you pass environment variables into a running container at runtime?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q19</span>
+            <span class="q-tag">Asked at Oracle &middot; 2025</span>
+          </div>
+          <p class="q-text">What is the significance of the `.dockerignore` file?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q20</span>
+            <span class="q-tag">Asked at Genpact &middot; 2025</span>
+          </div>
+          <p class="q-text">What is container orchestration, and why do teams move from plain Docker to Kubernetes or ECS?</p>
+        </div>
+</div>
+<h2 id="sec-dockerfile-deep-dive" class="section-title">Dockerfile Deep Dive</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q21</span>
+            <span class="q-tag">Asked at Tech Mahindra &middot; 2025</span>
+          </div>
+          <p class="q-text">Write a Dockerfile to containerize a simple Node.js Express application and explain each instruction.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q22</span>
+            <span class="q-tag">Asked at LTIMindtree &middot; 2026</span>
+          </div>
+          <p class="q-text">What is a multi-stage build in a Dockerfile? Write an example for a Go or Java application.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q23</span>
+            <span class="q-tag">Asked at Cisco &middot; 2026</span>
+          </div>
+          <p class="q-text">Why should you avoid running a container process as root, and how do you set a non-root user in a Dockerfile?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q24</span>
+            <span class="q-tag">Asked at VMware &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the difference between `RUN`, `CMD`, and `ENTRYPOINT` in terms of when each executes?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q25</span>
+            <span class="q-tag">Asked at Dell &middot; 2023</span>
+          </div>
+          <p class="q-text">How many `CMD` instructions can a Dockerfile have, and what happens if you specify more than one?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q26</span>
+            <span class="q-tag">Asked at Adobe &middot; 2023</span>
+          </div>
+          <p class="q-text">Explain the shell form vs. exec form of `CMD`/`ENTRYPOINT`. Why is exec form generally preferred?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q27</span>
+            <span class="q-tag">Asked at PayPal &middot; 2023</span>
+          </div>
+          <p class="q-text">How do you set a default value for an `ARG` and override it at build time?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q28</span>
+            <span class="q-tag">Asked at Freshworks &middot; 2024</span>
+          </div>
+          <p class="q-text">What is the difference between `ARG` and `ENV` in a Dockerfile?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q29</span>
+            <span class="q-tag">Asked at Razorpay &middot; 2024</span>
+          </div>
+          <p class="q-text">Why does the order of instructions in a Dockerfile matter for build caching?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q30</span>
+            <span class="q-tag">Asked at Myntra &middot; 2024</span>
+          </div>
+          <p class="q-text">How would you reduce the final image size of a Python application Dockerfile?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q31</span>
+            <span class="q-tag">Asked at Nagarro &middot; 2025</span>
+          </div>
+          <p class="q-text">What does `WORKDIR` do, and why is it preferred over using `RUN cd`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q32</span>
+            <span class="q-tag">Asked at Publicis Sapient &middot; 2025</span>
+          </div>
+          <p class="q-text">How do you expose a port in a Dockerfile, and does `EXPOSE` actually publish the port?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q33</span>
+            <span class="q-tag">Asked at EPAM Systems &middot; 2025</span>
+          </div>
+          <p class="q-text">Write a Dockerfile snippet that installs dependencies only when `package.json` changes, to make use of layer caching.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q34</span>
+            <span class="q-tag">Asked at ThoughtWorks &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the purpose of `HEALTHCHECK` in a Dockerfile? Write an example.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q35</span>
+            <span class="q-tag">Asked at Persistent Systems &middot; 2026</span>
+          </div>
+          <p class="q-text">How do you copy files from one build stage to another in a multi-stage Dockerfile?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q36</span>
+            <span class="q-tag">Asked at Mphasis &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the difference between `ONBUILD` and a regular instruction? When have you used `ONBUILD`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q37</span>
+            <span class="q-tag">Asked at Hexaware &middot; 2023</span>
+          </div>
+          <p class="q-text">How would you handle secrets (like an API key) needed only at build time without leaking them into the final image?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q38</span>
+            <span class="q-tag">Asked at Zoho &middot; 2023</span>
+          </div>
+          <p class="q-text">What is the effect of combining multiple `RUN` commands with `&amp;&amp;` versus writing separate `RUN` lines?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q39</span>
+            <span class="q-tag">Asked at Byju&#x27;s &middot; 2023</span>
+          </div>
+          <p class="q-text">How do you set a specific user and group ID in a Dockerfile for compliance with host file permissions?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q40</span>
+            <span class="q-tag">Asked at PhonePe &middot; 2024</span>
+          </div>
+          <p class="q-text">What is the difference between `STOPSIGNAL` and Docker&#x27;s default container stop behavior?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q41</span>
+            <span class="q-tag">Asked at Amazon &middot; 2024</span>
+          </div>
+          <p class="q-text">How would you debug a Dockerfile that fails at a specific `RUN` step during `docker build`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q42</span>
+            <span class="q-tag">Asked at Microsoft &middot; 2024</span>
+          </div>
+          <p class="q-text">Write a Dockerfile for a React app that builds static assets and serves them via Nginx, using multi-stage builds.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q43</span>
+            <span class="q-tag">Asked at Google &middot; 2025</span>
+          </div>
+          <p class="q-text">What is `LABEL` used for in a Dockerfile, and how would you use it for image metadata/versioning?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q44</span>
+            <span class="q-tag">Asked at Accenture &middot; 2025</span>
+          </div>
+          <p class="q-text">How do build arguments (`ARG`) interact with build cache invalidation?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q45</span>
+            <span class="q-tag">Asked at TCS &middot; 2025</span>
+          </div>
+          <p class="q-text">What are Dockerfile best practices you personally follow when writing production-grade Dockerfiles?</p>
+        </div>
+</div>
+<h2 id="sec-images-and-layers" class="section-title">Images &amp; Layers</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q46</span>
+            <span class="q-tag">Asked at Infosys &middot; 2026</span>
+          </div>
+          <p class="q-text">How do you inspect the layers of an existing Docker image?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q47</span>
+            <span class="q-tag">Asked at Wipro &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the difference between `docker commit` and building an image via a Dockerfile? Why is `docker commit` discouraged?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q48</span>
+            <span class="q-tag">Asked at Cognizant &middot; 2026</span>
+          </div>
+          <p class="q-text">How do you tag and push an image to a private Docker registry?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q49</span>
+            <span class="q-tag">Asked at Deloitte &middot; 2023</span>
+          </div>
+          <p class="q-text">What is image digest vs. image tag, and why might you pin a digest in production?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q50</span>
+            <span class="q-tag">Asked at JPMorgan Chase &middot; 2023</span>
+          </div>
+          <p class="q-text">How would you scan a Docker image for known vulnerabilities before deploying it?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q51</span>
+            <span class="q-tag">Asked at Walmart Labs &middot; 2023</span>
+          </div>
+          <p class="q-text">What is the difference between `docker save`/`docker load` and `docker export`/`docker import`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q52</span>
+            <span class="q-tag">Asked at Flipkart &middot; 2024</span>
+          </div>
+          <p class="q-text">How do you reduce build time when the same base image is used across many services?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q53</span>
+            <span class="q-tag">Asked at Paytm &middot; 2024</span>
+          </div>
+          <p class="q-text">What is a distroless image, and what trade-offs come with using one?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q54</span>
+            <span class="q-tag">Asked at Swiggy &middot; 2024</span>
+          </div>
+          <p class="q-text">How do you find out which Dockerfile instruction is responsible for a large image layer?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q55</span>
+            <span class="q-tag">Asked at Zomato &middot; 2025</span>
+          </div>
+          <p class="q-text">What is image squashing, and when would you use `docker build --squash`?</p>
+        </div>
+</div>
+<h2 id="sec-containers-and-runtime" class="section-title">Containers &amp; Runtime</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q56</span>
+            <span class="q-tag">Asked at HCLTech &middot; 2025</span>
+          </div>
+          <p class="q-text">How do you get a shell inside a running container, and how is that different from `docker attach`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q57</span>
+            <span class="q-tag">Asked at Capgemini &middot; 2025</span>
+          </div>
+          <p class="q-text">How would you copy a file from your host machine into a running container and vice versa?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q58</span>
+            <span class="q-tag">Asked at IBM &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the container lifecycle — from `create` to `run` to `stop` to `rm`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q59</span>
+            <span class="q-tag">Asked at Oracle &middot; 2026</span>
+          </div>
+          <p class="q-text">How do you view the logs of a container, and how would you follow logs in real time?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q60</span>
+            <span class="q-tag">Asked at Genpact &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the difference between restart policies `on-failure`, `always`, and `unless-stopped`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q61</span>
+            <span class="q-tag">Asked at Tech Mahindra &middot; 2023</span>
+          </div>
+          <p class="q-text">How do you limit the CPU and memory a container can consume?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q62</span>
+            <span class="q-tag">Asked at LTIMindtree &middot; 2023</span>
+          </div>
+          <p class="q-text">What happens to data inside a container when it is removed?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q63</span>
+            <span class="q-tag">Asked at Cisco &middot; 2023</span>
+          </div>
+          <p class="q-text">How would you troubleshoot a container that keeps restarting in a `CrashLoopBackOff`-like state?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q64</span>
+            <span class="q-tag">Asked at VMware &middot; 2024</span>
+          </div>
+          <p class="q-text">What is the difference between a detached container (`-d`) and an interactive container (`-it`)?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q65</span>
+            <span class="q-tag">Asked at Dell &middot; 2024</span>
+          </div>
+          <p class="q-text">How do you check the exit code of a stopped container and use it to debug a failure?</p>
+        </div>
+</div>
+<h2 id="sec-docker-networking" class="section-title">Docker Networking</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q66</span>
+            <span class="q-tag">Asked at Adobe &middot; 2024</span>
+          </div>
+          <p class="q-text">What are the different Docker network drivers — bridge, host, none, overlay — and when would you use each?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q67</span>
+            <span class="q-tag">Asked at PayPal &middot; 2025</span>
+          </div>
+          <p class="q-text">How do two containers on the same custom bridge network discover and talk to each other?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q68</span>
+            <span class="q-tag">Asked at Freshworks &middot; 2025</span>
+          </div>
+          <p class="q-text">What is the difference between the default bridge network and a user-defined bridge network?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q69</span>
+            <span class="q-tag">Asked at Razorpay &middot; 2025</span>
+          </div>
+          <p class="q-text">How do you publish a container&#x27;s port to the host, and what is the difference between `-p` and `-P`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q70</span>
+            <span class="q-tag">Asked at Myntra &middot; 2026</span>
+          </div>
+          <p class="q-text">How would you connect containers running on two different Docker hosts?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q71</span>
+            <span class="q-tag">Asked at Nagarro &middot; 2026</span>
+          </div>
+          <p class="q-text">What is an overlay network used for, and when is it needed outside of Swarm/Kubernetes?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q72</span>
+            <span class="q-tag">Asked at Publicis Sapient &middot; 2026</span>
+          </div>
+          <p class="q-text">How does Docker&#x27;s embedded DNS resolve container names to IP addresses?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q73</span>
+            <span class="q-tag">Asked at EPAM Systems &middot; 2023</span>
+          </div>
+          <p class="q-text">How would you debug a &#x27;connection refused&#x27; error between two containers on the same network?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q74</span>
+            <span class="q-tag">Asked at ThoughtWorks &middot; 2023</span>
+          </div>
+          <p class="q-text">What is the host network mode, and what are its trade-offs versus bridge mode?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q75</span>
+            <span class="q-tag">Asked at Persistent Systems &middot; 2023</span>
+          </div>
+          <p class="q-text">How do you isolate a container so it has no network access at all?</p>
+        </div>
+</div>
+<h2 id="sec-volumes-storage-and-persistence" class="section-title">Volumes, Storage &amp; Persistence</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q76</span>
+            <span class="q-tag">Asked at Mphasis &middot; 2024</span>
+          </div>
+          <p class="q-text">What is the difference between a bind mount and a Docker volume?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q77</span>
+            <span class="q-tag">Asked at Hexaware &middot; 2024</span>
+          </div>
+          <p class="q-text">How would you persist a database&#x27;s data across container restarts and re-deployments?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q78</span>
+            <span class="q-tag">Asked at Zoho &middot; 2024</span>
+          </div>
+          <p class="q-text">How do you list, inspect, and remove unused Docker volumes?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q79</span>
+            <span class="q-tag">Asked at Byju&#x27;s &middot; 2025</span>
+          </div>
+          <p class="q-text">What are the trade-offs of using `tmpfs` mounts versus regular volumes?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q80</span>
+            <span class="q-tag">Asked at PhonePe &middot; 2025</span>
+          </div>
+          <p class="q-text">How would you share the same volume between multiple containers?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q81</span>
+            <span class="q-tag">Asked at Amazon &middot; 2025</span>
+          </div>
+          <p class="q-text">How do you back up and restore data stored in a named Docker volume?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q82</span>
+            <span class="q-tag">Asked at Microsoft &middot; 2026</span>
+          </div>
+          <p class="q-text">What is the read-only mount option, and when would you use it in a Dockerfile or run command?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q83</span>
+            <span class="q-tag">Asked at Google &middot; 2026</span>
+          </div>
+          <p class="q-text">How does volume behavior differ when a container is defined in a Dockerfile vs. via `docker run -v`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q84</span>
+            <span class="q-tag">Asked at Accenture &middot; 2026</span>
+          </div>
+          <p class="q-text">What happens to a named volume if you delete the container that created it?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q85</span>
+            <span class="q-tag">Asked at TCS &middot; 2023</span>
+          </div>
+          <p class="q-text">How would you migrate data from a bind mount setup to a named volume setup with zero data loss?</p>
+        </div>
+</div>
+<h2 id="sec-docker-compose" class="section-title">Docker Compose</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q86</span>
+            <span class="q-tag">Asked at Infosys &middot; 2023</span>
+          </div>
+          <p class="q-text">What problem does Docker Compose solve that plain `docker run` commands don&#x27;t?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q87</span>
+            <span class="q-tag">Asked at Wipro &middot; 2023</span>
+          </div>
+          <p class="q-text">Write a `docker-compose.yml` for a web app with a Node.js service and a Postgres database.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q88</span>
+            <span class="q-tag">Asked at Cognizant &middot; 2024</span>
+          </div>
+          <p class="q-text">How do you scale a specific service using Docker Compose?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q89</span>
+            <span class="q-tag">Asked at Deloitte &middot; 2024</span>
+          </div>
+          <p class="q-text">What is the difference between `depends_on` and a proper healthcheck-based startup order in Compose?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q90</span>
+            <span class="q-tag">Asked at JPMorgan Chase &middot; 2024</span>
+          </div>
+          <p class="q-text">How do you override environment-specific values using multiple Compose files (e.g., `docker-compose.override.yml`)?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q91</span>
+            <span class="q-tag">Asked at Walmart Labs &middot; 2025</span>
+          </div>
+          <p class="q-text">How do services defined in the same Compose file discover each other by name?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q92</span>
+            <span class="q-tag">Asked at Flipkart &middot; 2025</span>
+          </div>
+          <p class="q-text">What is the difference between `docker-compose up` and `docker-compose up --build`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q93</span>
+            <span class="q-tag">Asked at Paytm &middot; 2025</span>
+          </div>
+          <p class="q-text">How would you pass secrets to a service in Docker Compose without hardcoding them in the YAML?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q94</span>
+            <span class="q-tag">Asked at Swiggy &middot; 2026</span>
+          </div>
+          <p class="q-text">How do you tear down a Compose stack including its volumes and networks?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q95</span>
+            <span class="q-tag">Asked at Zomato &middot; 2026</span>
+          </div>
+          <p class="q-text">What are Compose profiles, and when would you use them?</p>
+        </div>
+</div>
+<h2 id="sec-security-optimization-and-real-world-scenarios" class="section-title">Security, Optimization &amp; Real-World Scenarios</h2>
+<div class="q-grid">
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q96</span>
+            <span class="q-tag">Asked at HCLTech &middot; 2026</span>
+          </div>
+          <p class="q-text">How would you reduce the attack surface of a production Docker image?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q97</span>
+            <span class="q-tag">Asked at Capgemini &middot; 2023</span>
+          </div>
+          <p class="q-text">What is Docker Content Trust, and how does it help verify image integrity?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q98</span>
+            <span class="q-tag">Asked at IBM &middot; 2023</span>
+          </div>
+          <p class="q-text">How would you prevent a container from mounting sensitive host directories like `/etc` or `/var/run/docker.sock`?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q99</span>
+            <span class="q-tag">Asked at Oracle &middot; 2023</span>
+          </div>
+          <p class="q-text">A colleague built an image that is 1.8 GB for a simple Flask app — how would you investigate and shrink it?</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <span class="q-num">Q100</span>
+            <span class="q-tag">Asked at Genpact &middot; 2024</span>
+          </div>
+          <p class="q-text">Your container works locally but fails to start in the CI/CD pipeline with a permission denied error on a mounted volume — how do you troubleshoot it?</p>
+        </div>
+</div>
+
+  <footer>
+    Compiled for interview preparation &amp; mock-interview practice.
+  </footer>
+</div>
+
+</body>
+</html>
